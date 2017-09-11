@@ -1,0 +1,45 @@
+{
+  "name": "jest-gl",
+  "version": "0.1.0",
+  "description": "Test helpers for server-side web-gl testing.",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "jest",
+    "web-gl",
+    "test",
+    "visual",
+    "browserless"
+  ],
+  "author": "Austin Martin (auz.martin@gmail.com)",
+  "license": "ISC",
+  "dependencies": {
+    "gl": "^4.0.4",
+    "jest": "^20.0.4",
+    "looks-same": "^3.2.1",
+    "pngjs2": "^2.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.2",
+    "babel-jest": "^20.0.3",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-import": "^2.7.0",
+    "jest": "^20.0.4",
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.4.5",
+    "yargs": "^7.1.0"
+  }
+}
