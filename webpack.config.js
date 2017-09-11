@@ -41,8 +41,6 @@ module.exports = {
       },
     ],
 	},
-	node: {
-		fs: 'empty',
-	},
-  plugins: plugins,
+	plugins: plugins,
+	target: 'node',
 }
