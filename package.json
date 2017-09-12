@@ -1,6 +1,6 @@
 {
   "name": "jest-gl",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Test helpers for server-side web-gl testing.",
   "main": "index.js",
   "scripts": {
