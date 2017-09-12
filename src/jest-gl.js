@@ -14,12 +14,7 @@ module.exports = ((config) => {
 	config.diffPostfix = config.diffPostfix || '.diff'
 	config.highlightColor = config.highlightColor || '#ff00ff'
 
-	const SPEC_POSTFIX = config.specPostfix
-	const HEAD_POSTFIX = config.headPostfix
-	const DIFF_POSTFIX = config.diffPostfix
-	const HIGHLIGHT = config.highlightColor
-
-	const SNAPSHOT_POSTFIX = (process.env.TEST_MODE === 'update') ? SPEC_POSTFIX : HEAD_POSTFIX
+	const SNAPSHOT_POSTFIX = (process.env.TEST_MODE === 'update') ? config.specPostfix : config.headPostfix
 	return {
 		fromFile,
 		imageParity,
@@ -93,9 +88,9 @@ function imageParity(gl, dirName, imageName, strict = true, errorDiff = true) {
   }
 
   // when updating, reference and current file paths should be the same to guarantee parity
-  const reference = path.resolve(dirName, imageName) + SPEC_POSTFIX + '.png'
+  const reference = path.resolve(dirName, imageName) + config.specPostfix + '.png'
   const current = path.resolve(dirName, imageName) + SNAPSHOT_POSTFIX + '.png'
-  const diff = path.resolve(dirName, './output', (imageName + DIFF_POSTFIX + '.png'))
+  const diff = path.resolve(dirName, './output', (imageName + config.diffPostfix + '.png'))
 
   return new Promise(async (resolve, reject) => {
     snapshotPng(gl, current, gl.canvas.clientWidth, gl.canvas.clientHeight)
@@ -109,7 +104,7 @@ function diffImage(reference, current, diff, strict = true, errorDiff = true) {
     looksSame(reference, current, {strict}, (error, equal) => {
       error && reject(error)
       if(!equal && errorDiff) {
-        looksSame.createDiff({reference, current, diff, highlightColor: HIGHLIGHT, strict}, (e) => reject(e))
+        looksSame.createDiff({reference, current, diff, highlightColor: config.highlightColor, strict}, (e) => reject(e))
       } else {
         fs.unlink(diff)
       }
